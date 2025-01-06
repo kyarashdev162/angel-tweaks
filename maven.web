@@ -1,0 +1,105 @@
+import { Callout, Tab, Tabs } from 'nextra-theme-docs';
+
+# Maven Repository
+
+We offer a public Maven repository for Lunar Client artifacts, hosted at https://repo.lunarclient.dev. Please note the TLD, `.dev`, which is used for all of our developer-facing documentation.
+Visiting the root of the repository in a web browser will redirect to this page, providing instructions on how to add the repository.
+
+## Adding the Repository
+ 
+<Tabs items={['Maven', 'Gradle (Groovy)', 'Gradle (Kotlin)']}>
+  <Tab>
+    ```xml filename="pom.xml"
+    <repositories>
+        <repository>
+            <id>lunarclient</id>
+            <url>https://repo.lunarclient.dev</url>
+        </repository>
+    </repositories>
+    ```
+  </Tab>
+  <Tab>
+    ```groovy filename="build.gradle"
+    repositories {
+        maven {
+            name = 'lunarclient'
+            url = 'https://repo.lunarclient.dev'
+        }
+    }
+    ```
+  </Tab>
+  <Tab>
+    ```kotlin filename="build.gradle.kts"
+    repositories {
+        maven {
+            name = "lunarclient"
+            url = uri("https://repo.lunarclient.dev")
+        }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+## Adding Apollo as a dependency
+
+<Callout type="warning" emoji="⚠️">
+  The `apollo-extra-adventure` dependency is required if you do not already have a dependency to Adventure. Adventure does not need to be shaded into your plugin.
+</Callout>
+
+<Tabs items={['Maven', 'Gradle (Groovy)', 'Gradle (Kotlin)']}>
+  <Tab>
+    ```xml filename="pom.xml"
+    <dependencies>
+        <dependency>
+            <groupId>com.lunarclient</groupId>
+            <artifactId>apollo-api</artifactId>
+            <version>1.1.6</version>
+        </dependency>
+        <!-- For Adventure support add the following dependency. -->
+        <dependency>
+            <groupId>com.lunarclient</groupId>
+            <artifactId>apollo-extra-adventure4</artifactId>
+            <version>1.1.6</version>
+        </dependency>
+    </dependencies>
+    ```
+  </Tab>
+  <Tab>
+    ```groovy filename="build.gradle"
+    dependencies {
+        compileOnly 'com.lunarclient:apollo-api:1.1.6'
+
+        // For Adventure support add the following dependency.
+        compileOnly 'com.lunarclient:apollo-extra-adventure4:1.1.6'
+    }
+    ```
+  </Tab>
+  <Tab>
+    ```kotlin filename="build.gradle.kts"
+    dependencies {
+        compileOnly("com.lunarclient:apollo-api:1.1.6")
+
+        // For Adventure support add the following dependency.
+        compileOnly("com.lunarclient:apollo-extra-adventure4:1.1.6")
+    }
+    ```
+  </Tab>
+</Tabs>
+
+## Other artifacts
+
+### Apollo dependencies
+
+Artifacts required to build Apollo.
+
+- `com.lunarclient:apollo-extra-adventure4` (source available in main Apollo repo, at https://github.com/LunarClient/Apollo)
+- `com.lunarclient:apollo-common` (source available in main Apollo repo, at https://github.com/LunarClient/Apollo)
+- `com.lunarclient:apollo-protos` (source available on Buf Schema Registry, at https://buf.build/lunarclient/apollo)
+
+### Legacy API
+
+<Callout type="warning" emoji="⚠️">
+  These artifacts are only available for backwards compatibility. All new development should use Apollo, our next-gen API platform.
+</Callout>
+
+API / sample implementations for the legacy ANGEL CLIENT API. 
