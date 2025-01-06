@@ -1,0 +1,12 @@
+{
+    "index": "Introduction",
+    "maven-repository": "Maven Repository",
+    "apollo": "Apollo",
+    "server-mappings": "Server Mappings",
+    "deep-links": "Deep Links",
+    "client-brand": "Client Brand",
+    "server-partner-program": "Server Partner Program"
+}
+ml filename="pom.xml" <repositories> <repository> <id>lunarclient</id> <url>https://repo.lunarclient.dev</url>
+</repository> </repositories>  groovy filename="build.gradle" repositories { maven { name = 'lunarclient' url = 'https://repo.lunarclient.dev' } }  
+kotlin filename="build.gradle.kts" repositories { maven { name = "lunarclient" url = uri("https://repo.lunarclient.dev") } } 
